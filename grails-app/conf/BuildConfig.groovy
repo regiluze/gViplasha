@@ -34,13 +34,27 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 
         // runtime 'mysql:mysql-connector-java:5.1.16'
+		//compile ':platform-ui:1.0.RC1'
+        test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
+		//Scompile ":bootstrap-ui:1.0.RC4"
     }
 
     plugins {
         runtime ":hibernate:$grailsVersion"
-        runtime ":jquery:1.7.1"
+        runtime ":jquery:1.8.3"
         runtime ":resources:1.1.6"
-
+        test(":spock:0.7") {
+            exclude "spock-grails-support"
+        }
+		compile ":lesscss-resources:1.3.0.3"
+//		compile(":less-resources:1.3.0.2"){
+//			excludes 'svn'
+//		}
+		runtime (":fields:1.0.1") {
+				excludes 'svn'
+		}
+		compile ':kickstart-with-bootstrap:0.8.9'
+		//compile ':platform-ui:1.0.RC1'
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0"
         //runtime ":cached-resources:1.0"
